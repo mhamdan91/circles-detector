@@ -1,0 +1,7 @@
+Required packages to run the code... 
+1- tensorflow CPU/GPU
+2- numpy
+3- tqdm
+4- Shapely
+5- Skimage
+6- termcolor
