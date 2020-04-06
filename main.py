@@ -1,8 +1,9 @@
 import numpy as np
 from shapely.geometry.point import Point
 from skimage.draw import circle_perimeter_aa
-import matplotlib.pyplot as plt
 from tqdm import tqdm
+import matplotlib.pyplot as plt
+import cv2
 import predictor
 
 
@@ -27,9 +28,9 @@ def noisy_circle(size, radius, noise):
     draw_circle(img, row, col, rad)
 
     # Noise
-    img += noise * np.random.rand(*img.shape)
+    img_noisy = img + noise * np.random.rand(*img.shape)
 
-    return (row, col, rad), img
+    return (row, col, rad), img_noisy, img
 
 
 def find_circle(img):
@@ -61,5 +62,10 @@ def main():
         results = np.array(results)
         # print((results > 0.7))
         print('Accuracy:', (results > 0.5).mean(), 'attempt ', attempt+1)
+        y, x, r = params
+        img_rec = cv2.rectangle(img_noisy.copy(), (x - r - 1, y - r - 1), (x + r + 1, y + r + 1), (0, 0, 0), 2)
+        stacked_img = np.hstack([img, img_noisy, np.zeros([200, 1], dtype=np.uint8), img_rec])
+        plt.imshow(stacked_img)
+        plt.show()
 
 main()
