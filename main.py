@@ -62,10 +62,21 @@ def main():
         results = np.array(results)
         # print((results > 0.7))
         print('Accuracy:', (results > 0.5).mean(), 'attempt ', attempt+1)
+        
+        # Plot the last generated image -- Although out scope but defined in memory
+        fig, (ax,ax1,ax2) = plt.subplots(1,3, figsize=(10,5))
         y, x, r = params
         img_rec = cv2.rectangle(img_noisy.copy(), (x - r - 1, y - r - 1), (x + r + 1, y + r + 1), (0, 0, 0), 2)
-        stacked_img = np.hstack([img, img_noisy, np.zeros([200, 1], dtype=np.uint8), img_rec])
-        plt.imshow(stacked_img)
+        ax.imshow(img)
+        ax.set_title("Original image")
+        ax1.imshow(img_noisy.copy())
+        ax1.set_title("Image with added noise")
+        ax2.imshow(img_rec)
+        ax2.set_title("Detected noisy circle")
         plt.show()
+        # stacked_img = np.hstack([img, img_noisy, np.zeros([200, 1], dtype=np.uint8), img_rec])
+        # plt.imshow(stacked_img)
+        # plt.show()
 
-main()
+if __name__ == '__main__':
+    main()
