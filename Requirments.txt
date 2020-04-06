@@ -5,3 +5,4 @@ Required packages to run the code...
 4- Shapely
 5- Skimage
 6- termcolor
+7- cv2
