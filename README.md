@@ -2,7 +2,7 @@
 
 
 ### Files Description
-* main: used to evaluate the trained model on 1000 generated samples with a noisey ratio of 2.
+* main: used to evaluate the trained model on 1000 generated samples with a noise ratio of 2.
 * generate_training_data: similar to main, but used to generate the training, validation, and test data used to train the deep learning model.
 * predictor: contains the deep learning model and core code that makes the inference using the generated samples in main.
 * validation: code snippet used to validate the model while training.
