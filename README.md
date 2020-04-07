@@ -6,7 +6,7 @@
 * generate_training_data: similar to main, but used to generate the training, validation, and test data used to train the deep learning model.
 * predictor: contains the deep learning model and core code that makes the inference using the generated samples in main.
 * validation: code snippet used to validate the model while training.
-* output.txt: contains log data for the last 1000 training steps.
+* output.txt: contains log data for the last 1000 training epochs.
 
 ### Folders Description
 * checkpoints: contains 2 checkpoint files of the trained model.
